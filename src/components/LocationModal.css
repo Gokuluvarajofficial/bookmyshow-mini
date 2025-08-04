@@ -1,0 +1,81 @@
+
+.location-modal {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 30px;
+  width: 80%;
+  max-width: 900px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.detect-location {
+  color: #f84464;
+  margin-top: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.popular-title {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.city-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.city-icon {
+  text-align: center;
+  width: 80px;
+  cursor: pointer;
+}
+
+.view-all {
+  text-align: center;
+  color: #f84464;
+  margin-top: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
