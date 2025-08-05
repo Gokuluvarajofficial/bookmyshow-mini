@@ -1,0 +1,12 @@
+.promo-banner2-container {
+  margin-top: 30px;
+  padding: 0 40px; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.promo-banner2-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}

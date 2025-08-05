@@ -1,0 +1,50 @@
+.premiere-section {
+  background-color: #2b3148;
+  padding: 20px 40px;
+  color: white;
+  text-align: center;
+}
+
+.premiere-title-block {
+  margin-bottom: 30px;
+}
+
+.premiere-title-block h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.premiere-title-block p {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.premiere-movie-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.premiere-card {
+  width: 200px;
+}
+
+.premiere-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.premiere-card h4 {
+  font-size: 16px;
+  margin: 5px 0 2px;
+  color: white;
+}
+
+.premiere-card p {
+  font-size: 13px;
+  color: #ccc;
+}
