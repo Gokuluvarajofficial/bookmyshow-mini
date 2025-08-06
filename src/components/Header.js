@@ -1,10 +1,33 @@
-// components/Header.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { FaSearch } from 'react-icons/fa';
 import LocationModal from './LocationModal';
+import SignInModal from './SignInModal';
+import SignUpModal from './SignUpModal';
 
 function Header() {
+  const [userEmail, setUserEmail] = useState('');
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  useEffect(() => {
+    const isSignedIn = sessionStorage.getItem('isSignedIn');
+    const savedUser = localStorage.getItem('currentUser');
+    if (isSignedIn && savedUser) {
+      setUserEmail(savedUser);
+    }
+  }, []);
+
+  const handleLoginSuccess = (email) => {
+    setUserEmail(email);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('isSignedIn');
+    localStorage.removeItem('currentUser');
+    setUserEmail('');
+  };
+
   return (
     <header className="header">
       <div className="top-header">
@@ -22,7 +45,17 @@ function Header() {
 
         <div className="location-signin">
           <LocationModal />
-          <button className="signin-btn">Sign in</button>
+          {userEmail ? (
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <span className="email-badge">{userEmail}</span>
+              <button className="signin-btn" onClick={handleLogout}>Log out</button>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button className="signin-btn" onClick={() => setShowSignIn(true)}>Sign in</button>
+              <button className="signin-btn" onClick={() => setShowSignUp(true)}>Sign up</button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -42,6 +75,19 @@ function Header() {
           <span>Gift Cards</span>
         </div>
       </div>
+
+      {showSignIn && (
+        <SignInModal
+          onClose={() => setShowSignIn(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      )}
+
+      {showSignUp && (
+        <SignUpModal
+          onClose={() => setShowSignUp(false)}
+        />
+      )}
     </header>
   );
 }

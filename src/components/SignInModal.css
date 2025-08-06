@@ -1,0 +1,76 @@
+/* Background overlay */
+.signin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal box */
+.signin-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
+.signin-modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Inputs */
+.signin-modal input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.signin-modal button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f84464;
+  color: white;
+  transition: background 0.3s;
+}
+
+.signin-modal button:hover {
+  background-color: #e53950;
+}
+
+/* Cancel button */
+.signin-modal .close-btn {
+  background-color: #888;
+  color: white;
+}
+
+.signin-modal .close-btn:hover {
+  background-color: #666;
+}
+
+/* Error / Success messages */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;
+  text-align: center;
+}
