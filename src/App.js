@@ -1,5 +1,7 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import PromoBanner from './components/PromoBanner';
 import RecommendedMovies from './components/RecommendedMovies';
@@ -10,6 +12,7 @@ import TheatreSelectionPage from './pages/TheatreSelectionPage';
 import SeatSelectionPage from './pages/SeatSelectionPage';
 import Footer from './components/Footer';
 
+import { AuthProvider } from './context/AuthContext'; 
 
 function HomePage() {
   return (
@@ -20,7 +23,6 @@ function HomePage() {
       <PromoBanner2 />
       <BestOfLiveEvents />
       <PremieresSection />
-      <RecommendedMovies />
       <Footer />
     </>
   );
@@ -28,13 +30,15 @@ function HomePage() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/select-theatre/:movieId" element={<TheatreSelectionPage />} />
-        <Route path="/select-seats/:movieId/:theatreId" element={<SeatSelectionPage />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/select-theatre/:movieId" element={<TheatreSelectionPage />} />
+          <Route path="/select-seats/:movieId/:theatreId" element={<SeatSelectionPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

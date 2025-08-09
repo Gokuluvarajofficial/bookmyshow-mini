@@ -1,21 +1,20 @@
+// src/components/SignInModal.js
 import React, { useState } from 'react';
 import './SignInModal.css';
+import { useAuth } from '../context/AuthContext'; 
 
-function SignInModal({ onClose, onLoginSuccess }) {
+function SignInModal({ onClose }) {
+  const { signIn } = useAuth(); // from context
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleLogin = () => {
-    const savedUsers = JSON.parse(localStorage.getItem('users')) || {};
-
-    if (savedUsers[email] && savedUsers[email] === password) {
-      sessionStorage.setItem('isSignedIn', 'true');
-      localStorage.setItem('currentUser', email);
-      onLoginSuccess(email);
+    const res = signIn(email, password);
+    if (res.ok) {
       onClose();
     } else {
-      setError('Invalid email or password');
+      setError(res.message || 'Invalid email or password');
     }
   };
 

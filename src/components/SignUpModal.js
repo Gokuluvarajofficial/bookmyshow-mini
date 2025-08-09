@@ -1,7 +1,10 @@
+// src/components/SignUpModal.js
 import React, { useState } from 'react';
 import './SignInModal.css';
+import { useAuth } from '../context/AuthContext'; 
 
 function SignUpModal({ onClose }) {
+  const { signUp } = useAuth(); // from context
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -16,19 +19,15 @@ function SignUpModal({ onClose }) {
       setMessage('Passwords do not match');
       return;
     }
-    const users = JSON.parse(localStorage.getItem('users')) || {};
-    if (users[email]) {
-      setMessage('User already exists. Please sign in.');
-      return;
-    }
-    users[email] = password;
-    localStorage.setItem('users', JSON.stringify(users));
-    setMessage('Registered successfully! Please sign in.');
 
-    // ✅ Auto-close after 1.5 sec
-    setTimeout(() => {
-      onClose();
-    }, 1500);
+    const res = signUp(email, password);
+    setMessage(res.message);
+
+    if (res.ok) {
+      setTimeout(() => {
+        onClose();
+      }, 1500);
+    }
   };
 
   return (
